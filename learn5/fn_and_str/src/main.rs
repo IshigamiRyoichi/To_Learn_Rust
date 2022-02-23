@@ -77,6 +77,36 @@ fn test_fn9(){
     println!("ret is {}",ret);
 }
 
+fn vec_return(max:i32) -> Vec<i32>{
+    let mut v = Vec::new();
+    for i in 0..max{
+        v.push(i);
+    }
+    v
+}
+
+fn test_fn10(){
+    let v = vec_return(10);
+    for i in v{
+        println!("{}",i);
+    }
+}
+
+fn vec_change(v:&mut Vec<i32>){
+    for i in v{
+        *i = *i * 10;
+    }
+}
+
+fn test_fn11(){
+    let mut v = vec![1,2,3,4,5];
+    vec_change(&mut v);
+    for i in v{
+        print!("{} ",i);
+    }
+    println!("");
+}
+
 fn main() {
-    test_fn9();
+    test_fn11();
 }
