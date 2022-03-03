@@ -176,6 +176,86 @@ fn test7(){
     }
 }
 
-fn main() {
-    test7();
+// enum Result<T, E>{
+//     Ok(T),
+//     Err(E),
+// }
+
+fn test8(){
+    let r = "xxx".parse::<i32>();
+    match r {
+        Ok(n) => println!("n is {}",n),
+        Err(e) => println!("error: {:?}",e),
+    }
+}
+
+fn test9(){
+    let n = "100".parse::<i32>().unwrap();
+    // let n = "xxx".parse::<i32>().unwrap();
+    println!("n is {}",n);
+}
+
+// fn half_number(a: &str) -> i32{
+//     a.parse::<i32>().unwrap() / 2
+// }
+
+// fn test10(){
+//     // let n: i32 = half_number("100");
+//     let n: i32 = half_number("xxx");
+//     println!("n is {}",n);
+// }
+
+// use std::num::ParseIntError;
+// fn half_number(s: &str) -> Result<i32, ParseIntError> {
+//     match s.parse::<i32>(){
+//         Ok(n) => Ok(n/2),
+//         Err(err) => Err(err),
+//     }
+// }
+
+// fn test11(){
+//     // match half_number("100"){
+//     match half_number("xxx"){
+//         Ok(n) => println!("Ok: {}",n),
+//         Err(err) => println!("Err: {:?}", err),
+//     }
+// }
+
+use std::num::ParseIntError;
+// fn half_number(s: &str) -> Result<i32, ParseIntError> {
+    // s.parse::<i32>().map(|n| n/2)
+    // let n = s.parse::<i32>()?;
+    // Ok(n/2)
+// }
+
+fn half_number(s: &str) -> Result<i32, &str> {
+    match s.parse::<i32>(){
+        Ok(n) => Ok(n/2),
+        Err(err) => Err("実行エラー:これは数値ではありません"),
+    }
+}
+
+fn test12(){
+    match half_number("100"){
+        Ok(n) => println!("Ok: {}",n),
+        Err(err) => println!("Err: {:?}", err),
+    }
+    match half_number("xxx"){
+        Ok(n) => println!("Ok: {}",n),
+        Err(err) => println!("Err: {:?}", err),
+    }
+}
+
+fn test13(){
+    let n = "100".parse::<i32>().expect("これは数値ではありません");
+    println!("n is {}",n);
+    let n = "xxx".parse::<i32>().expect("これは数値ではありません");
+    println!("n is {}",n);
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>>{
+    let path = "./sample.txt";
+    let data = std::fs::read_to_string(path)? ;
+    println!("data is {}",data);
+    Ok(())
 }
