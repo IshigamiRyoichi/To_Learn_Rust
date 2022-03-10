@@ -1,0 +1,1 @@
+/home/iryoichi/Documents/vscode/Rust/To_Learn_Rust/learn11/my_random/target/debug/my_random: /home/iryoichi/Documents/vscode/Rust/To_Learn_Rust/learn11/my_random/src/lib.rs /home/iryoichi/Documents/vscode/Rust/To_Learn_Rust/learn11/my_random/src/main.rs
