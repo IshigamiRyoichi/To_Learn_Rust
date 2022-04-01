@@ -1,0 +1,1 @@
+/home/iryoichi/Documents/vscode/Rust/To_Learn_Rust/learn16/library/target/debug/library: /home/iryoichi/Documents/vscode/Rust/To_Learn_Rust/learn16/library/build.rs /home/iryoichi/Documents/vscode/Rust/To_Learn_Rust/learn16/library/src/main.rs
